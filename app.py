@@ -15,7 +15,7 @@ def query_clickhouse(date):
 def main():
     st.title('ClickHouse Google Alerts')
     selected_date = st.date_input("Choose a date", datetime.today())
-    if st.button('Show alerts'):
+    if selected_date:
         with st.spinner("Finding alerts...", show_time=True):
             data = query_clickhouse(selected_date.strftime('%Y-%m-%d'))
         if data.shape[0] > 0:
